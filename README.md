@@ -10,7 +10,6 @@ Deploy a honeypot that simulates vulnerable SSH/FTP services, logs attackers' ac
 - 📈 Matplotlib + GeoIP for data analysis
 - 🐧 Ubuntu (Tested on Ubuntu 20.04/22.04)
 
-
 ## 🚀 Features & Deliverables
 
 ### ✅ Running Honeypot
@@ -25,12 +24,7 @@ Deploy a honeypot that simulates vulnerable SSH/FTP services, logs attackers' ac
 ### ✅ Visual Attack Reports
 - Bar graph of most frequent attackers
 - Geolocation map of source IPs
-
----
-
 ## 📂 Project Structure
-
-```bash
 honeypot_project/
 │
 ├── cowrie.log                # Sample log from Cowrie
@@ -39,6 +33,5 @@ honeypot_project/
 ├── screenshot_2.png          # Fail2Ban activity
 ├── screenshot_3.png          # Attack graph visualization
 ├── screenshot_4.png          # Sample logfile breakdown
-└── README.md                 # Project instructions
-
+└── README.md                 # Project instruction
 # Author: Suhani Pandey
