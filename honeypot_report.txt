@@ -51,7 +51,6 @@ Blocks repeated attackers after 3 failed attempts.
 IP Geolocation & Visualization:
 - geoip_lookup.py used to map IPs
 - world_map.html: Interactive map
-- ip_heatmap.png: Heatmap
 - top_attackers_bar_chart.png: Bar chart
 
 Security Outcomes:
